@@ -73,8 +73,8 @@ def SaveToFile(thetest, filename):
 	thisFile.open("tests/"+filename+".txt", "w")
 	
 
-allQuestions += GetFromFile("custom.txt")
-allQuestions += GetFromFile("exqs.txt")
+#allQuestions += GetFromFile("custom.txt")
+#allQuestions += GetFromFile("exqs.txt")
 
 #GET INPUT
 while True:
