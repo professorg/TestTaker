@@ -47,6 +47,7 @@ testTest.run()
 #READING FILES
 allQuestions = []
 
+#Takes in file path of text doc, returns test
 def GetFromFile(filename):
 	Questions = []
 	thisFile = open(filename, "r")
@@ -54,11 +55,12 @@ def GetFromFile(filename):
 	Q = ""
 	A = []
 	C = 0
-	while True:
+	working = True
+	while working:
 		thisLine = thisFile.readline()
 		linenum += 1
 		if thisLine == "":
-			break
+			working = False
 		else:
 			if linenum == 1:
 				Q = thisLine
@@ -72,30 +74,48 @@ def GetFromFile(filename):
 				A = []
 				C = 0
 	thisFile.close()
-	return Questions
+	return Test(Questions)
 			
+#takes in test and file name, saves
+def SaveToFile(thetest, filename):
+	thisFile.open("tests/"+filename+".txt", "w")
+	
 
 allQuestions += GetFromFile("custom.txt")
 allQuestions += GetFromFile("exqs.txt")
 
 #GET INPUT
-response = ""
 while True:
+    response = raw_input("What would you like to do? ")
     if response.lower() in ("test", "show", "print"):
         # Print test
         pass
     elif response.lower() in ("create", "new"):
         # Create test
-        pass
+        test = createTest()
+    elif response.lower() in ("exit", "quit"):
+        break
     else:
         # Invalid input
         pass
 
 
 #MAKE CUSTOM
-def createProblem():
-    pass
+def createTest():
+    questions = []
 
+    while raw_input("Would you like to add another question?").lower() in ("yes", "y"):
+        Q = raw_input("Enter the question: ")
+        A = []
+        print "Enter four answers:"
+        A.append(raw_input("0. "))
+        A.append(raw_input("1. "))
+        A.append(raw_input("2. "))
+        A.append(raw_input("3. "))
+        N = raw_input("Enter the number of the correct answer: ")
+        question = Question(Q, A, C)
+        questions.append(question)
+    return Test(questions)
 
 #ANSWER PRESET
 
