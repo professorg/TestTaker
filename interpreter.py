@@ -24,6 +24,7 @@ class Question(object):
 		self.correct_answer = correct_answer
 		self.correct = 0
 	def run(self):
+		os.system('cls')
 		print self.prompt
 		for i in random.sample(self.answers, len(self.answers)):
 			print i
@@ -33,7 +34,7 @@ class Question(object):
 		print answer
 		if int(answer) == self.correct_answer:
 			self.correct = 1
-		os.system('cls')
+		
 
 
 			
@@ -95,6 +96,7 @@ def getFiles():
 			files.append(str(file))
 	return files
 def pickTest():
+	os.system('cls')
 	files = getFiles()
 	for i in range(len(files)):
 		print str(i) + ": " + files[i]
