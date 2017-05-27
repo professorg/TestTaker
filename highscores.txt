@@ -1,1 +1,2 @@
-/exqs.txt: 0
+hellotest.txt.txt: 0
+hellotest.txt.txt: 1

@@ -18,7 +18,7 @@ class Test(object):
 		print ""
 		print "Press enter to continue"
 		file = open("highscores.txt", "a")
-		file.write(self.name +": "+ str(self.score)) #the thing
+		file.write(self.name +": "+ str(self.score)+"\n") #the thing
 		file.close()
 		pause = raw_input("")
 class Question(object):
