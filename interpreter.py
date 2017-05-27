@@ -2,10 +2,6 @@ import io
 import random
 import os
 
-
-	
-	
-
 class Test(object):
 	def __init__(self, questions):
 		self.questions = questions
@@ -39,13 +35,6 @@ class Question(object):
 
 		os.system('cls')
 
-
-
-			
-
-		
-#READING FILES
-allQuestions = []
 
 #Takes in file path of text doc, returns test
 def GetFromFile(filename):
@@ -89,8 +78,22 @@ def SaveToFile(thetest, filename):
 	thisFile.close()
 	
 
-#allQuestions += GetFromFile("custom.txt")
-#allQuestions += GetFromFile("exqs.txt")
+#MAKE CUSTOM
+def createTest():
+    questions = []
+
+    while raw_input("Would you like to add another question?").lower() in ("yes", "y"):
+        Q = raw_input("Enter the question: ")
+        A = []
+        print "Enter four answers:"
+        A.append(raw_input("0. "))
+        A.append(raw_input("1. "))
+        A.append(raw_input("2. "))
+        A.append(raw_input("3. "))
+        N = raw_input("Enter the number of the correct answer: ")
+        question = Question(Q, A, C)
+        questions.append(question)
+    return Test(questions)
 
 
 def getFiles():
@@ -125,27 +128,3 @@ while True:
     else:
         # Invalid input
         pass
-
-
-#MAKE CUSTOM
-def createTest():
-    questions = []
-
-    while raw_input("Would you like to add another question?").lower() in ("yes", "y"):
-        Q = raw_input("Enter the question: ")
-        A = []
-        print "Enter four answers:"
-        A.append(raw_input("0. "))
-        A.append(raw_input("1. "))
-        A.append(raw_input("2. "))
-        A.append(raw_input("3. "))
-        N = raw_input("Enter the number of the correct answer: ")
-        question = Question(Q, A, C)
-        questions.append(question)
-    return Test(questions)
-
-#ANSWER PRESET
-
-
-	
-	
