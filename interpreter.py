@@ -26,15 +26,19 @@ class Question(object):
 	def run(self):
 		os.system('cls')
 		print self.prompt
-		for i in random.sample(self.answers, len(self.answers)):
-			print i
+		randomized = random.sample(self.answers, len(self.answers))
+		randomized_correct = randomized.index(self.answers[self.correct_answer])
+		for i in range(1, len(self.answers) + 1):
+			print str(i) + ": " + randomized[i - 1]
 		print ""
 		answer = raw_input("Your Answer:  ")
-		print self.correct_answer
+		print randomized_correct
 		print answer
-		if int(answer) == self.correct_answer:
+		if int(answer) - 1 == randomized_correct:
 			self.correct = 1
-		
+
+		os.system('cls')
+
 
 
 			
