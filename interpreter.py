@@ -1,7 +1,7 @@
 import io
 import random
 import os
-
+import time
 
 	
 	
@@ -14,9 +14,12 @@ class Test(object):
 		for question in self.questions:
 			question.run()
 			self.score += question.correct
+		os.system('cls')
 		print "Congrats! The test is over!"
 		print "Your score: " + str(self.score) + "/" + str(len(self.questions))
-		
+		print ""
+		print "Press enter to continue"
+		pause = raw_input("")
 class Question(object):
 	def __init__(self, prompt, answers, correct_answer):
 		self.prompt = prompt
@@ -107,22 +110,27 @@ def pickTest():
 
 #GET INPUT
 while True:
-    print "What would you like to do?"
-    response = raw_input("> ")
-    if response.lower() in ("test", "show", "print"):
-      
+	os.system('cls')
+	print "What would you like to do?"
+	print "test, show, print - show test"
+	print "create, new - create new test"
+	print "exit, quit - exit this prompt"
+	response = raw_input("> ")
+	if response.lower() in ("test", "show", "print"):
+
 		pickTest()
-	
-        
-    elif response.lower() in ("create", "new"):
-        # Create test
-        test = createTest()
-        SaveToFile(test, raw_input("Enter the file name: "))
-    elif response.lower() in ("exit", "quit"):
-        break
-    else:
-        # Invalid input
-        pass
+
+		
+	elif response.lower() in ("create", "new"):
+		# Create test
+		test = createTest()
+		SaveToFile(test, raw_input("Enter the file name: "))
+	elif response.lower() in ("exit", "quit"):
+		break
+	else:
+		print "invalid input"
+		time.sleep(1)
+
 
 
 #MAKE CUSTOM
