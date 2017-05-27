@@ -21,12 +21,11 @@ class Question(object):
 	def __init__(self, prompt, answers, correct_answer):
 		self.prompt = prompt
 		self.answers = answers
-		random.shuffle(self.answers)
 		self.correct_answer = correct_answer
 		self.correct = 0
 	def run(self):
 		print self.prompt
-		for i in self.answers:
+		for i in random.sample(self.answers, len(self.answers)):
 			print i
 		print ""
 		answer = raw_input("Your Answer:  ")
