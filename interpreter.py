@@ -43,6 +43,7 @@ testTest.run()
 #READING FILES
 allQuestions = []
 
+#Takes in file path of text doc, returns test
 def GetFromFile(filename):
 	Questions = []
 	thisFile = open(filename, "r")
@@ -50,11 +51,12 @@ def GetFromFile(filename):
 	Q = ""
 	A = []
 	C = 0
-	while True:
+	working = True
+	while working:
 		thisLine = thisFile.readline()
 		linenum += 1
 		if thisLine == "":
-			break
+			working = False
 		else:
 			if linenum == 1:
 				Q = thisLine
@@ -68,8 +70,12 @@ def GetFromFile(filename):
 				A = []
 				C = 0
 	thisFile.close()
-	return Questions
+	return Test(Questions)
 			
+#takes in test and file name, saves
+def SaveToFile(thetest, filename):
+	thisFile.open("tests/"+filename+".txt", "w")
+	
 
 allQuestions += GetFromFile("custom.txt")
 allQuestions += GetFromFile("exqs.txt")
