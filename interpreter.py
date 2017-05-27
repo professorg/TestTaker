@@ -32,8 +32,6 @@ class Question(object):
 			print str(i) + ": " + randomized[i - 1]
 		print ""
 		answer = raw_input("Your Answer:  ")
-		print randomized_correct
-		print answer
 		if int(answer) - 1 == randomized_correct:
 			self.correct = 1
 
