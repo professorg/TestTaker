@@ -92,7 +92,7 @@ def createTest():
         A.append(raw_input("2. "))
         A.append(raw_input("3. "))
         N = raw_input("Enter the number of the correct answer: ")
-        question = Question(Q, A, C)
+        question = Question(Q, A, N)
         questions.append(question)
     return Test(questions)
 
