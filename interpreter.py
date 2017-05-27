@@ -74,6 +74,14 @@ def GetFromFile(filename):
 #takes in test and file name, saves
 def SaveToFile(thetest, filename):
 	thisFile.open("tests/"+filename+".txt", "w")
+	total = ""
+	for i in thetest.questions:
+		total += i.prompt+"\n"
+		for x in i.answers:
+			total += x+"\n"
+		total += i.correct_answer+"\n"
+	thisFile.write(total)
+	thisFile.close()
 	
 
 #allQuestions += GetFromFile("custom.txt")
