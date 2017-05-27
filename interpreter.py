@@ -35,8 +35,17 @@ testTest.run()
 		
 		
 #READING FILES
-
-
+thisFile = open("exqs.txt", "r")
+linenum = 0
+while True:
+	thisLine = thisFile.readline()
+	linenum += 1
+	if thisLine == "":
+		break
+	else:
+		if linenum == 1:
+			
+	
 
 #GET INPUT
 
