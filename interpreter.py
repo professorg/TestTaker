@@ -34,7 +34,7 @@ class Question(object):
 		print answer
 		if int(answer) == self.correct_answer:
 			self.correct = 1
-
+		os.system('cls')
 
 
 			
@@ -80,12 +80,28 @@ def SaveToFile(thetest, filename):
 #allQuestions += GetFromFile("custom.txt")
 #allQuestions += GetFromFile("exqs.txt")
 
+
+def getFiles():
+	files = []
+	for file in os.listdir(os.path.dirname(os.path.realpath(__file__)) + "/tests"):
+		if file.endswith(".txt"):
+			files.append(str(file))
+	return files
+def pickTest():
+	files = getFiles()
+	for i in range(len(files)):
+		print str(i) + ": " + files[i]
+	selection = raw_input("Select a test to take: ")
+	GetFromFile("tests/" + files[int(selection)]).run()
+
 #GET INPUT
 while True:
     response = raw_input("What would you like to do? ")
     if response.lower() in ("test", "show", "print"):
-        # Print test
-        pass
+      
+		pickTest()
+	
+        
     elif response.lower() in ("create", "new"):
         # Create test
         test = createTest()
@@ -115,21 +131,6 @@ def createTest():
 
 #ANSWER PRESET
 
-def getFiles():
-	files = []
-	for file in os.listdir(os.path.dirname(os.path.realpath(__file__)) + "/tests"):
-		if file.endswith(".txt"):
-			files.append(str(file))
-	return files
-def pickTest():
-	files = getFiles()
-	for i in range(len(files)):
-		print str(i) + ": " + files[i]
-	selection = raw_input("Select a test to take: ")
-	GetFromFile(files[selection]).run()
-	
 
-
-pickTest()
 	
 	
