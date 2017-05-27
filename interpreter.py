@@ -1,4 +1,10 @@
 import io
+import os
+
+def getFiles():
+	for file in os.listdir(os.path.dirname(os.path.realpath(__file__)) + "/tests"):
+		if file.endswith(".txt"):
+			print(file)
 
 class Test(object):
 	def __init__(self, questions):
@@ -28,11 +34,11 @@ class Question(object):
 
 testQuestion = Question("Which number is best?", ["1: 1", "2: 7", "3: 5", "4: 9"], 2)
 testTest = Test([testQuestion])
-
+getFiles()
 testTest.run()
 
 			
-		
+
 		
 #READING FILES
 allQuestions = []
@@ -74,7 +80,7 @@ while True:
     if response.lower() in ("test", "show", "print"):
         # Print test
         pass
-    else if response.lower() in ("create", "new"):
+    elif response.lower() in ("create", "new"):
         # Create test
         pass
     else:
