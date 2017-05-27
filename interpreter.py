@@ -48,23 +48,37 @@ while True:
 	
 
 #GET INPUT
-response = ""
 while True:
+    response = raw_input("What would you like to do? ")
     if response.lower() in ("test", "show", "print"):
         # Print test
         pass
-    else if response.lower() in ("create", "new"):
+    elif response.lower() in ("create", "new"):
         # Create test
-        pass
+        test = createTest()
+    elif response.lower() in ("exit", "quit"):
+        break
     else:
         # Invalid input
         pass
 
 
 #MAKE CUSTOM
-def createProblem():
-    pass
+def createTest():
+    questions = []
 
+    while raw_input("Would you like to add another question?").lower() in ("yes", "y"):
+        Q = raw_input("Enter the question: ")
+        A = []
+        print "Enter four answers:"
+        A.append(raw_input("0. "))
+        A.append(raw_input("1. "))
+        A.append(raw_input("2. "))
+        A.append(raw_input("3. "))
+        N = raw_input("Enter the number of the correct answer: ")
+        question = Question(Q, A, C)
+        questions.append(question)
+    return Test(questions)
 
 #ANSWER PRESET
 
