@@ -106,6 +106,9 @@ def pickTest():
 #GET INPUT
 while True:
     print "What would you like to do?"
+    print "test, show, print - show test"
+    print "create, new - create new test"
+    print "exit, quit - exit this prompt"
     response = raw_input("> ")
     if response.lower() in ("test", "show", "print"):
       
