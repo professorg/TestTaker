@@ -24,6 +24,7 @@ class Question(object):
 		self.correct_answer = correct_answer
 		self.correct = 0
 	def run(self):
+		os.system('cls')
 		print self.prompt
 		randomized = random.sample(self.answers, len(self.answers))
 		randomized_correct = randomized.index(self.answers[self.correct_answer])
@@ -35,7 +36,9 @@ class Question(object):
 		print answer
 		if int(answer) - 1 == randomized_correct:
 			self.correct = 1
-		#os.system('cls')
+
+		os.system('cls')
+
 
 
 			
@@ -76,6 +79,14 @@ def GetFromFile(filename):
 #takes in test and file name, saves
 def SaveToFile(thetest, filename):
 	thisFile.open("tests/"+filename+".txt", "w")
+	total = ""
+	for i in thetest.questions:
+		total += i.prompt+"\n"
+		for x in i.answers:
+			total += x+"\n"
+		total += i.correct_answer+"\n"
+	thisFile.write(total)
+	thisFile.close()
 	
 
 #allQuestions += GetFromFile("custom.txt")
@@ -89,6 +100,7 @@ def getFiles():
 			files.append(str(file))
 	return files
 def pickTest():
+	os.system('cls')
 	files = getFiles()
 	for i in range(len(files)):
 		print str(i) + ": " + files[i]
@@ -97,7 +109,8 @@ def pickTest():
 
 #GET INPUT
 while True:
-    response = raw_input("What would you like to do? ")
+    print "What would you like to do?"
+    response = raw_input("> ")
     if response.lower() in ("test", "show", "print"):
       
 		pickTest()
@@ -106,6 +119,7 @@ while True:
     elif response.lower() in ("create", "new"):
         # Create test
         test = createTest()
+        SaveToFile(test, raw_input("Enter the file name: "))
     elif response.lower() in ("exit", "quit"):
         break
     else:
