@@ -122,10 +122,10 @@ def pickTest():
 	for i in range(len(files)):
 		print str(i) + ": " + files[i]
 	selection = raw_input("Select a test to take: ")
+	GetFromFile(files[selection]).run()
 	
 
 
-def main():
-	getFiles()
+pickTest()
 	
 	
