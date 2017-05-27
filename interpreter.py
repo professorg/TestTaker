@@ -88,16 +88,17 @@ def createTest():
     questions = []
 
     while raw_input("Would you like to add another question?").lower() in ("yes", "y"):
-        Q = raw_input("Enter the question: ")
-        A = []
-        print "Enter four answers:"
-        A.append(raw_input("0. "))
-        A.append(raw_input("1. "))
-        A.append(raw_input("2. "))
-        A.append(raw_input("3. "))
-        N = raw_input("Enter the number of the correct answer: ")
-        question = Question(Q, A, N)
-        questions.append(question)
+		os.system('cls')
+		Q = raw_input("Enter the question: ")
+		A = []
+		print "Enter four answers:"
+		A.append(raw_input("0. "))
+		A.append(raw_input("1. "))
+		A.append(raw_input("2. "))
+		A.append(raw_input("3. "))
+		N = raw_input("Enter the number of the correct answer: ")
+		question = Question(Q, A, N)
+		questions.append(question)
     return Test(questions)
 
 
