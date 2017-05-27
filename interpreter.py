@@ -1,4 +1,5 @@
 import io
+import random
 
 class Test(object):
 	def __init__(self, questions):
@@ -15,12 +16,13 @@ class Question(object):
 	def __init__(self, prompt, answers, correct_answer):
 		self.prompt = prompt
 		self.answers = answers
+		random.shuffle(self.answers)
 		self.correct_answer = correct_answer
 		self.correct = 0
 	def run(self):
 		print self.prompt
-		for i in random.randrange(0, len(self.answers)):
-			print self.answers[i]
+		for i in self.answers:
+			print i
 		print ""
 		input = raw_input("Your Answer:  ")
 		if str(input) == self.correct_answer:
@@ -91,7 +93,7 @@ while True:
     if response.lower() in ("test", "show", "print"):
         # Print test
         pass
-    else if response.lower() in ("create", "new"):
+    elif response.lower() in ("create", "new"):
         # Create test
         pass
     else:
