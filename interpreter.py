@@ -1,4 +1,10 @@
 import io
+import os
+
+def getFiles():
+	for file in os.listdir(os.path.dirname(os.path.realpath(__file__)) + "/tests"):
+		if file.endswith(".txt"):
+			print(file)
 
 class Test(object):
 	def __init__(self, questions):
@@ -28,24 +34,45 @@ class Question(object):
 
 testQuestion = Question("Which number is best?", ["1: 1", "2: 7", "3: 5", "4: 9"], 2)
 testTest = Test([testQuestion])
-
+getFiles()
 testTest.run()
 
 			
-		
+
 		
 #READING FILES
-thisFile = open("exqs.txt", "r")
-linenum = 0
-while True:
-	thisLine = thisFile.readline()
-	linenum += 1
-	if thisLine == "":
-		break
-	else:
-		if linenum == 1:
+allQuestions = []
+
+def GetFromFile(filename):
+	Questions = []
+	thisFile = open(filename, "r")
+	linenum = 0
+	Q = ""
+	A = []
+	C = 0
+	while True:
+		thisLine = thisFile.readline()
+		linenum += 1
+		if thisLine == "":
+			break
+		else:
+			if linenum == 1:
+				Q = thisLine
+			if linenum in [2, 3, 4, 5]:
+				A.append(thisLine)
+			if linenum == 6:
+				C = int(thisLine)
+				linenum = 0
+				Questions.append(Question(Q, A, C))
+				Q = ""
+				A = []
+				C = 0
+	thisFile.close()
+	return Questions
 			
-	
+
+allQuestions += GetFromFile("custom.txt")
+allQuestions += GetFromFile("exqs.txt")
 
 #GET INPUT
 while True:
