@@ -20,11 +20,22 @@ class Question(object):
 
 
 #GET INPUT
-
+response = ""
+while True:
+    if response.lower() in ("test", "show", "print"):
+        # Print test
+        pass
+    else if response.lower() in ("create", "new"):
+        # Create test
+        pass
+    else:
+        # Invalid input
+        pass
 
 
 #MAKE CUSTOM
-
+def createProblem():
+    pass
 
 
 #ANSWER PRESET
