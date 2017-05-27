@@ -4,8 +4,9 @@ import os
 import time
 
 class Test(object):
-	def __init__(self, questions):
+	def __init__(self, questions, name):
 		self.questions = questions
+		self.name = name[6:]
 		self.score = 0
 	def run(self):
 		for question in self.questions:
@@ -16,6 +17,9 @@ class Test(object):
 		print "Your score: " + str(self.score) + "/" + str(len(self.questions))
 		print ""
 		print "Press enter to continue"
+		file = open("highscores.txt", "a")
+		file.write(self.name +": "+ str(self.score)) #the thing
+		file.close()
 		pause = raw_input("")
 class Question(object):
 	def __init__(self, prompt, answers, correct_answer):
@@ -64,7 +68,7 @@ def GetFromFile(filename):
 				A = []
 				C = 0
 	thisFile.close()
-	return Test(Questions)
+	return Test(Questions, filename)
 			
 #takes in test and file name, saves
 def SaveToFile(thetest, filename):
