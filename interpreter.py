@@ -1,4 +1,4 @@
-
+import io
 
 class Test(object):
 	def __init__(self, questions):
@@ -15,6 +15,16 @@ class Question(object):
 			
 		
 		
+#READING FILES
 
 
-question = raw_input("Test Question:  ")
+
+#GET INPUT
+
+
+
+#MAKE CUSTOM
+
+
+
+#ANSWER PRESET
