@@ -35,8 +35,13 @@ testTest.run()
 		
 		
 #READING FILES
+allQuestions = []
+
 thisFile = open("exqs.txt", "r")
 linenum = 0
+Q = ""
+A = []
+C = 0
 while True:
 	thisLine = thisFile.readline()
 	linenum += 1
@@ -44,8 +49,41 @@ while True:
 		break
 	else:
 		if linenum == 1:
+			Q = thisLine
+		if linenum in [2, 3, 4, 5]:
+			A.append(thisLine)
+		if linenum == 6:
+			C = int(thisLine)
+			linenum = 0
+			allQuestions.append(Question(Q, A, C))
+			Q = ""
+			A = []
+			C = 0
+thisFile.close()
 			
-	
+thisFile = open("custom.txt", "r")
+linenum = 0
+Q = ""
+A = []
+C = 0
+while True:
+	thisLine = thisFile.readline()
+	linenum += 1
+	if thisLine == "":
+		break
+	else:
+		if linenum == 1:
+			Q = thisLine
+		if linenum in [2, 3, 4, 5]:
+			A.append(thisLine)
+		if linenum == 6:
+			C = int(thisLine)
+			linenum = 0
+			allQuestions.append(Question(Q, A, C))
+			Q = ""
+			A = []
+			C = 0
+thisFile.close()
 
 #GET INPUT
 response = ""
