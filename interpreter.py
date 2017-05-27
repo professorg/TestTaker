@@ -68,7 +68,7 @@ def GetFromFile(filename):
 			
 #takes in test and file name, saves
 def SaveToFile(thetest, filename):
-	thisFile.open("tests/"+filename+".txt", "w")
+	thisFile = open("tests/"+filename+".txt", "w")
 	total = ""
 	for i in thetest.questions:
 		total += i.prompt+"\n"
