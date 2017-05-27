@@ -109,7 +109,8 @@ def pickTest():
 #GET INPUT
 while True:
 	os.system('cls')
-	response = raw_input("What would you like to do? ")
+	print "What would you like to do?"
+	response = raw_input("> ")
 	if response.lower() in ("test", "show", "print"):
 	  
 		pickTest()
@@ -118,11 +119,13 @@ while True:
 	elif response.lower() in ("create", "new"):
 		# Create test
 		test = createTest()
+		SaveToFile(test, raw_input("Enter the file name: "))
 	elif response.lower() in ("exit", "quit"):
 		break
 	else:
-		# Invalid input
-		pass
+		print "invalid input"
+		time.sleep(1)
+
 
 
 #MAKE CUSTOM
