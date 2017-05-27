@@ -19,8 +19,8 @@ class Question(object):
 		self.correct = 0
 	def run(self):
 		print self.prompt
-		for i in self.answers:
-			print i
+		for i in random.randrange(0, len(self.answers)):
+			print self.answers[i]
 		print ""
 		input = raw_input("Your Answer:  ")
 		if str(input) == self.correct_answer:
