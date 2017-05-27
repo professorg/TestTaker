@@ -24,8 +24,10 @@ class Question(object):
 		for i in self.answers:
 			print i
 		print ""
-		input = raw_input("Your Answer:  ")
-		if str(input) == self.correct_answer:
+		answer = raw_input("Your Answer:  ")
+		print self.correct_answer
+		print answer
+		if int(answer) == self.correct_answer:
 			self.correct = 1
 
 testQuestion = Question("Which number is best?", ["1: 1", "2: 7", "3: 5", "4: 9"], 2)
